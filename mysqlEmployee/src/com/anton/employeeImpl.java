@@ -19,7 +19,8 @@ public class employeeImpl implements employeeInterface{
 
         // sql query we want to ask
         String query = "INSERT INTO employee values(?,?,?,?)";
-        try {
+        try (Connection con = DBConnection.createDBConnection();
+             PreparedStatement pstm = con.prepareStatement(query)){
             /**
              * prepareStatement : execute parameterized SQL statements.
              * provides methods to set the values of the parameters in the SQL query, which can help prevent SQL
